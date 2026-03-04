@@ -85,11 +85,11 @@ header p {
 
 .rosa-dos-ventos {
     position: absolute;
-    bottom: 90px;
-    right: 25px;
-    width: 60px;
-    opacity: 0.75;
-    z-index: 1000;
+    bottom: 120px;
+    right: 50px;
+    width: 80px;
+    opacity: 0;
+    z-index: 1500;
 }
 
 /* ========================================== */
