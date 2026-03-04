@@ -26,14 +26,19 @@ L.control.layers({
 // ==========================================
 
 function loadGeoJSON(url, options, bringFront = false) {
+
     fetch(url)
         .then(res => res.json())
         .then(data => {
+
             var layer = L.geoJSON(data, options).addTo(map);
+
             if (bringFront) layer.bringToFront();
+
         })
         .catch(err => console.error("Erro ao carregar:", url, err));
 }
+
 
 // ==========================================
 // 🔹 POPUP CONTRIBUIÇÃO
@@ -48,81 +53,126 @@ function fecharAviso(){
 }
 
 function irFormulario(){
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSfGb7pc-sHomENdICrElskZD10qva8j08s_DbzBoju2hI3xGw/viewform", "_blank");
+    window.open(
+    "https://docs.google.com/forms/d/e/1FAIpQLSfGb7pc-sHomENdICrElskZD10qva8j08s_DbzBoju2hI3xGw/viewform",
+    "_blank"
+    );
 }
+
 
 // ==========================================
 // 🔹 LIMITES MUNICIPAIS
 // ==========================================
 
 loadGeoJSON('assets/limites_municipais.geojson', {
+
     style: {
         color: "#003049",
         weight: 2,
         fillOpacity: 0.05
     },
 
-    interactive: false,   // 👈 impede captura de clique
+    interactive:false,
 
     onEachFeature: function(feature, layer) {
+
         if (feature.properties) {
+
             layer.bindPopup(`
                 <strong>Município:</strong> ${feature.properties.NM_MUNICIP || "-"}
             `);
+
         }
     }
+
 });
+
 
 // ==========================================
 // 🔹 SEDES MUNICIPAIS
 // ==========================================
+// ==========================================
+// 🔹 SEDES MUNICIPAIS
+// ==========================================
 
-loadGeoJSON('assets/sedes_municipais.geojson', {
-    pointToLayer: function(feature, latlng) {
-        return L.circleMarker(latlng, {
-            radius: 7,
-            fillColor: "#2a9d8f",
-            color: "#ffffff",
-            weight: 2,
-            fillOpacity: 1
-        });
-    },
-    onEachFeature: function(feature, layer) {
-        layer.bindPopup(`
-            <strong>Município:</strong> ${feature.properties?.Name || "-"}
-        `);
-    }
-}, true);
+fetch('assets/sedes_municipais.geojson')
+.then(res => res.json())
+.then(data => {
 
+    console.log("Sedes carregadas:", data); // ajuda debug
+
+    var sedesLayer = L.geoJSON(data, {
+
+        pointToLayer: function(feature, latlng){
+
+            return L.circleMarker(latlng, {
+
+                radius: 6,
+                fillColor: "#2a9d8f",
+                color: "#ffffff",
+                weight: 2,
+                fillOpacity: 1
+
+            });
+
+        },
+
+        onEachFeature: function(feature, layer){
+
+            let nome =
+                feature.properties?.NM_MUNICIP ||
+                feature.properties?.nome ||
+                feature.properties?.name ||
+                "Sede Municipal";
+
+            layer.bindPopup(`
+                <strong>Sede Municipal</strong><br>
+                ${nome}
+            `);
+
+        }
+
+    }).addTo(map);
+
+    sedesLayer.bringToFront();
+
+})
+.catch(err => console.error("Erro sedes:", err));
 // ==========================================
 // 🔹 VIAS DE EXPANSÃO
 // ==========================================
 
 fetch('assets/vias_expansao.geojson')
+
 .then(res => res.json())
+
 .then(data => {
 
     var viasLayer = L.geoJSON(data, {
 
-        style: function(feature) {
+        style: function(feature){
 
             let nomeVia = feature.properties.layer;
 
-            if (nomeVia === "Vetor 01") {
-                return { color: "#d90429", weight: 4 };
-            } 
-            else if (nomeVia === "Vetor 02") {
-                return { color: "#135908", weight: 4 };
-            } 
-            else if (nomeVia === "Vetor 03") {
-                return { color: "#0c08ef", weight: 4 };
-            } 
-            else {
-                return { color: "#f4f006", weight: 4 };
+            if(nomeVia === "Vetor 01"){
+                return { color:"#d90429", weight:4 };
             }
+
+            else if(nomeVia === "Vetor 02"){
+                return { color:"#135908", weight:4 };
+            }
+
+            else if(nomeVia === "Vetor 03"){
+                return { color:"#0c08ef", weight:4 };
+            }
+
+            else{
+                return { color:"#f4f006", weight:4 };
+            }
+
         },
 
-        onEachFeature: function(feature, layer) {
+        onEachFeature:function(feature, layer){
 
             let props = feature.properties;
 
@@ -132,37 +182,61 @@ fetch('assets/vias_expansao.geojson')
                 <strong>Descrição:</strong><br>
                 ${props["Informações"] || "-"}
             `);
+
         }
 
     }).addTo(map);
 
-    viasLayer.bringToFront(); // 👈 garante clique
+    viasLayer.bringToFront();
+
 });
+
 
 // ==========================================
 // 🔹 PONTOS DE ALAGAMENTO
 // ==========================================
 
 var markers = L.layerGroup();
-var floodIcon = L.divIcon({
-    className: "",
-    html: `<div class="pulse-marker"></div>`,
-    iconSize: [18, 18],
-    iconAnchor: [9, 9]
+
+
+// 🔴 Ícone oficial DEA
+
+var iconDEA = L.divIcon({
+
+    className:"",
+    html:`<div class="pulse-red"></div>`,
+    iconSize:[18,18],
+    iconAnchor:[9,9]
+
 });
+
+
+// 🔵 Ícone colaborativo
+
+var iconPublico = L.divIcon({
+
+    className:"",
+    html:`<div class="pulse-blue"></div>`,
+    iconSize:[18,18],
+    iconAnchor:[9,9]
+
+});
+
 
 var sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1NaIwiVdKK-yCAMp2stgMbS4oBwJT-M2_9gIRVnbERKNcwLsLdG1AdgBPe9HbUt9LsNgnnSB_xx6r/pub?output=csv";
 
-Papa.parse(sheetURL, {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
 
-    complete: function(results) {
+Papa.parse(sheetURL,{
+
+    download:true,
+    header:true,
+    skipEmptyLines:true,
+
+    complete:function(results){
 
         markers.clearLayers();
 
-        results.data.forEach(function(row) {
+        results.data.forEach(function(row){
 
             let latKey = Object.keys(row).find(k => k.toLowerCase().includes("lat"));
             let lonKey = Object.keys(row).find(k => k.toLowerCase().includes("long"));
@@ -171,39 +245,69 @@ Papa.parse(sheetURL, {
             let localKey = Object.keys(row).find(k => k.toLowerCase().includes("ident"));
             let autorKey = Object.keys(row).find(k => k.toLowerCase().includes("autor"));
 
-            if (!latKey || !lonKey) return;
+            if(!latKey || !lonKey) return;
 
             let latitude = parseFloat(row[latKey]);
             let longitude = parseFloat(row[lonKey]);
 
-            if (!isNaN(latitude) && !isNaN(longitude)) {
+            if(!isNaN(latitude) && !isNaN(longitude)){
 
-                let marker = L.marker([latitude, longitude], { icon: floodIcon })
-                    .bindPopup(`
-                        <strong>${row[localKey] || "-"}</strong><br>
-                        <strong>Data:</strong> ${row[dataKey] || "-"}<br>
-                        <strong>Hora:</strong> ${row[horaKey] || "-"}<br>
-                        <strong>Autor:</strong> ${row[autorKey] || "Não informado"}
-                    `);
+                let fonte = row[autorKey] || "";
+
+                let icon = iconPublico;
+
+                if(
+                    fonte.includes("Departamento de Estudos Ambientais") ||
+                    fonte.includes("DEA")
+                ){
+                    icon = iconDEA;
+                }
+
+                let marker = L.marker([latitude,longitude],{icon:icon})
+
+                .bindPopup(`
+
+                    <strong>${row[localKey] || "-"}</strong><br>
+                    <strong>Data:</strong> ${row[dataKey] || "-"}<br>
+                    <strong>Hora:</strong> ${row[horaKey] || "-"}<br>
+                    <strong>Autor:</strong> ${fonte || "Não informado"}
+
+                `);
 
                 markers.addLayer(marker);
+
             }
+
         });
 
         markers.addTo(map);
+
     }
+
 });
+
 
 // ==========================================
 // 🔹 NORTE GEOGRÁFICO
 // ==========================================
 
-var north = L.control({position: 'topright'});
+var north = L.control({position:'topright'});
 
 north.onAdd = function(map){
-    var div = L.DomUtil.create('div', 'north-arrow');
+
+    var div = L.DomUtil.create('div','north-arrow');
     div.innerHTML = "N";
     return div;
+
 };
 
 north.addTo(map);
+
+
+// ==========================================
+// 🔹 AUTO RELOAD 1H
+// ==========================================
+
+//setInterval(function(){
+// location.reload();
+//},3600000);
