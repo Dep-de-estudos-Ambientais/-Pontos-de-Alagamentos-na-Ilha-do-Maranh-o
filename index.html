@@ -1,127 +1,195 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Pontos de Alagamentos - Ilha do Maranhão</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    
-    <!-- CSS personalizado -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Pontos de Alagamentos - Ilha do Maranhão</title>
 
-    <!-- PapaParse -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- PapaParse -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 
 </head>
+
+
 <body>
 
 <!-- ========================================== -->
-<!-- 🔹 HEADER -->
+<!-- HEADER -->
 <!-- ========================================== -->
 
 <header>
 
-    <a href="https://imesc.ma.gov.br/observatorio-ambiental"
-       target="_blank"
-       class="btn-observatorio">
-        Observatório Ambiental
-    </a>
+<!-- Botão Observatório -->
 
-    <div class="titulo-central">
-        <h1>Pontos de Alagamentos na Ilha do Maranhão</h1>
-        <p>Departamento de Estudos Ambientais – IMESC</p>
-    </div>
+<a href="https://imesc.ma.gov.br/observatorio-ambiental"
+target="_blank"
+class="btn-observatorio">
 
-    <img src="assets/logo_dea.png" class="logo-dea" alt="Logo DEA">
+Observatório Ambiental
+
+</a>
+
+
+<!-- Título -->
+
+<div class="titulo-central">
+
+<h1>Pontos de Alagamentos na Ilha do Maranhão</h1>
+
+<p>Departamento de Estudos Ambientais</p>
+
+</div>
+
+
+<!-- Logo -->
+
+<img src="assets/logo_dea.png"
+class="logo-dea"
+alt="Logo DEA">
+
 
 </header>
 
+
 <!-- ========================================== -->
-<!-- 🔹 MAPA -->
+<!-- MAPA -->
 <!-- ========================================== -->
 
 <div id="map"></div>
 
+
 <!-- Rosa dos Ventos -->
-<img src="assets/norte.png" class="rosa-dos-ventos" alt="Norte">
+
+<img src="assets/norte.png"
+class="rosa-dos-ventos"
+alt="Norte Geográfico">
+
 
 <!-- ========================================== -->
-<!-- 🔹 LEGENDA -->
+<!-- LEGENDA -->
 <!-- ========================================== -->
 
 <div class="legenda">
-    <h4>Legenda</h4>
-    <div>
-        <span class="legenda-icon flood"></span>
-        Ponto de Alagamento
-    </div>
-    <div>
-        <span class="linha via1"></span> Vetor 01
-    </div>
-    <div>
-        <span class="linha via2"></span> Vetor 02
-    </div>
-    <div>
-        <span class="linha via3"></span> Vetor 03
-    </div>
-    <div>
-        <span class="linha via4"></span> Vetor 04
-    </div>
+
+<h4>Legenda</h4>
+
+<div>
+<span class="legenda-icon dea"></span>
+Ocorrência registrada pelo DEA
 </div>
 
+<div>
+<span class="legenda-icon publico"></span>
+Ocorrência informada pela população
+</div>
+
+<div>
+<span class="legenda-icon sede"></span>
+Sede municipal
+</div>
+
+<br>
+
+<div>
+<span class="linha via1"></span> Vetor 01
+</div>
+
+<div>
+<span class="linha via2"></span> Vetor 02
+</div>
+
+<div>
+<span class="linha via3"></span> Vetor 03
+</div>
+
+<div>
+<span class="linha via4"></span> Vetor 04
+</div>
+
+</div>
+
+
 <!-- ========================================== -->
-<!-- 🔹 POPUP CONTRIBUIÇÃO -->
+<!-- POPUP CONTRIBUIÇÃO -->
 <!-- ========================================== -->
 
 <div id="popupAviso" class="popupAviso">
-    <div class="popupContent">
-        <h3>Contribua com nossa pesquisa</h3>
-        <p>
-            Você será redirecionado para um formulário público onde poderá cadastrar
-            pontos de alagamento, ajudando na construção e manutenção desta base de dados.
-        </p>
-        <p>
-            As informações auxiliam o poder público na formulação de políticas públicas
-            e ajudam outros usuários a evitar áreas de risco em dias chuvosos.
-        </p>
 
-        <button onclick="irFormulario()">Continuar</button>
-        <button onclick="fecharAviso()">Cancelar</button>
-    </div>
+<div class="popupContent">
+
+<h3>Contribua com nossa pesquisa</h3>
+
+<p>
+Você será redirecionado para um formulário público onde poderá cadastrar
+pontos de alagamento, ajudando na construção e manutenção desta base de dados.
+</p>
+
+<p>
+As informações auxiliam o poder público na formulação de políticas públicas
+e ajudam outros usuários a evitar áreas de risco em dias chuvosos.
+</p>
+
+<button onclick="irFormulario()">Continuar</button>
+
+<button onclick="fecharAviso()">Cancelar</button>
+
 </div>
 
+</div>
+
+
 <!-- ========================================== -->
-<!-- 🔹 RODAPÉ -->
+<!-- RODAPÉ -->
 <!-- ========================================== -->
 
 <footer>
 
-    <div class="footer-left">
-        Instituto Maranhense de Estudos Socioeconômicos e Cartográficos – IMESC<br>
-        Plataforma desenvolvida por: Departamento de Estudos Ambientais (DEA)
-    </div>
+<div class="footer-left">
 
-    <div class="footer-center">
-        <button class="btn-contribua" onclick="abrirAviso()">
-            Contribua com nossa pesquisa
-        </button>
-    </div>
+Plataforma desenvolvida por: Departamento de Estudos Ambientais (DEA/IMESC)
 
-    <div class="footer-right">
-        Mapa desenvolvido via estudo técnico:<br>
-        Diálogos para Cidades Inteligentes – Mobilidade Urbana na Ilha do Maranhão
-    </div>
+</div>
+
+
+<div class="footer-center">
+
+<button class="btn-contribua"
+onclick="abrirAviso()">
+
+Contribua com nossa pesquisa
+
+</button>
+
+</div>
+
+
+<div class="footer-right">
+
+Mapa desenvolvido via estudo técnico:<br>
+Diálogos para Cidades Inteligentes – Mobilidade Urbana na Ilha do Maranhão
+
+</div>
 
 </footer>
 
+
 <!-- ========================================== -->
-<!-- 🔹 SCRIPTS -->
+<!-- SCRIPTS -->
 <!-- ========================================== -->
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script src="script.js"></script>
+
 
 </body>
 </html>
