@@ -1,0 +1,243 @@
+/* ========================================== */
+/* CONFIGURAÇÃO GLOBAL */
+/* ========================================== */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ========================================== */
+/* HEADER */
+/* ========================================== */
+
+header {
+    position: relative;
+    background: #0c4b33;
+    padding: 18px 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Título central */
+
+.titulo-central {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+header p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* Logo */
+
+.logo-dea {
+    height: 45px;
+}
+
+/* ========================================== */
+/* BOTÕES */
+/* ========================================== */
+
+.btn-observatorio,
+.btn-contribua {
+    background: white;
+    color: #0f5b34;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-observatorio:hover,
+.btn-contribua:hover {
+    background: #e6e6e6;
+}
+
+/* ========================================== */
+/* MAPA */
+/* ========================================== */
+
+#map {
+    width: 100%;
+    height: calc(100vh - 140px);
+}
+
+/* ========================================== */
+/* ROSA DOS VENTOS */
+/* ========================================== */
+
+.rosa-dos-ventos {
+    position: absolute;
+    bottom: 90px;
+    right: 25px;
+    width: 60px;
+    opacity: 0.75;
+    z-index: 1000;
+}
+
+/* ========================================== */
+/* LEGENDA */
+/* ========================================== */
+
+.legenda {
+    position: absolute;
+    bottom: 90px;
+    left: 20px;
+    background: white;
+    padding: 12px;
+    font-size: 12px;
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+    z-index: 1000;
+}
+
+.legenda h4 {
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
+.legenda-icon.flood {
+    width: 14px;
+    height: 14px;
+    background: #d90429;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Linhas dos vetores */
+
+.linha {
+    display: inline-block;
+    width: 20px;
+    height: 4px;
+    margin-right: 6px;
+}
+
+.via1 { background: #d90429; }
+.via2 { background: #135908; }
+.via3 { background: #0c08ef; }
+.via4 { background: #f4f006; }
+
+/* ========================================== */
+/* RODAPÉ */
+/* ========================================== */
+
+footer {
+    background: #0c4b33;
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.footer-center {
+    text-align: center;
+}
+
+/* ========================================== */
+/* PONTOS DE ALAGAMENTO (ANIMAÇÃO) */
+/* ========================================== */
+
+.pulse-marker {
+    width: 14px;
+    height: 14px;
+    background: #d90429;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: relative;
+}
+
+.pulse-marker::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    background: rgba(217,4,41,0.6);
+    animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* ========================================== */
+/* POPUP CONTRIBUIÇÃO */
+/* ========================================== */
+
+.popupAviso {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.popupContent {
+    background: white;
+    padding: 25px;
+    max-width: 450px;
+    border-radius: 8px;
+}
+
+.popupContent h3 {
+    margin-top: 0;
+}
+
+.popupContent button {
+    margin-right: 8px;
+    padding: 6px 12px;
+    border: none;
+    background: #0f5b34;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popupContent button:hover {
+    background: #135f3b;
+}
+
+/* ========================================== */
+/* NORTE GEOGRÁFICO */
+/* ========================================== */
+
+.north-arrow {
+    background: white;
+    padding: 6px 10px;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
