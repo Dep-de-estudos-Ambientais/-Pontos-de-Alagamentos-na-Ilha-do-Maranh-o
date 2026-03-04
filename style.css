@@ -236,8 +236,7 @@ footer {
 
 .north-arrow {
     background: white;
-    padding: 6px 10px;
-    height: 50px;
+    padding: 12px 24px;
     font-weight: bold;
     border-radius: 4px;
     box-shadow: 0 0 6px rgba(0,0,0,0.3);
