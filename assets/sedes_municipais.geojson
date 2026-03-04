@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "sedes_municipais",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "OID_": 0, "Name": "São Luís", "FolderPath": "Sedes_municipais.kmz/Meus lugares", "SymbolID": 0, "AltMode": -1, "Base": 0.0, "Snippet": null, "PopupInfo": null, "HasLabel": -1, "LabelID": 0, "OBJECTID": 0, "geometriaa": null, "nome": null, "geocodigo": null }, "geometry": { "type": "Point", "coordinates": [ -44.306207017999952, -2.527590049999954, 0.0 ] } },
+{ "type": "Feature", "properties": { "fid": 2, "OID_": 0, "Name": "Paço do Lumiar", "FolderPath": null, "SymbolID": 0, "AltMode": 0, "Base": 0.0, "Snippet": null, "PopupInfo": null, "HasLabel": 0, "LabelID": 0, "OBJECTID": 1, "geometriaa": "Não", "nome": "Paço do Lumiar", "geocodigo": "2107506" }, "geometry": { "type": "Point", "coordinates": [ -44.109184900962369, -2.517610717960219, 0.0 ] } },
+{ "type": "Feature", "properties": { "fid": 3, "OID_": 0, "Name": "Raposa", "FolderPath": null, "SymbolID": 0, "AltMode": 0, "Base": 0.0, "Snippet": null, "PopupInfo": null, "HasLabel": 0, "LabelID": 0, "OBJECTID": 2, "geometriaa": "Não", "nome": "Raposa", "geocodigo": "2109452" }, "geometry": { "type": "Point", "coordinates": [ -44.10320761274108, -2.442655434200903, 0.0 ] } },
+{ "type": "Feature", "properties": { "fid": 4, "OID_": 0, "Name": "São José de Ribamar", "FolderPath": null, "SymbolID": 0, "AltMode": 0, "Base": 0.0, "Snippet": null, "PopupInfo": null, "HasLabel": 0, "LabelID": 0, "OBJECTID": 3, "geometriaa": "Não", "nome": "São José de Ribamar", "geocodigo": "2111201" }, "geometry": { "type": "Point", "coordinates": [ -44.058120333086841, -2.553838958700904, 0.0 ] } }
+]
+}
