@@ -45,7 +45,7 @@ header p {
 /* Logo */
 
 .logo-dea {
-    height: 50px;
+    height: 45px;
 }
 
 /* ========================================== */
@@ -236,7 +236,7 @@ footer {
 
 .north-arrow {
     background: white;
-    padding: 12px 24px;
+    padding: 6px 10px;
     font-weight: bold;
     border-radius: 4px;
     box-shadow: 0 0 6px rgba(0,0,0,0.3);
