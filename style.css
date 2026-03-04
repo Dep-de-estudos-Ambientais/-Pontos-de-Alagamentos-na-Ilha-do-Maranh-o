@@ -81,6 +81,14 @@ header p {
 /* ========================================== */
 /* ROSA DOS VENTOS */
 /* ========================================== */
+.rosa-dos-ventos {
+    position: absolute;
+    bottom: 90px;
+    right: 25px;
+    width: 60px;
+    opacity: 0.75;
+    z-index: 1000;
+}
 /* norte */
 .norte {
     height: 20px;
