@@ -7,6 +7,7 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
+
 /* ========================================== */
 /* HEADER */
 /* ========================================== */
@@ -42,10 +43,13 @@ header p {
     opacity: 0.85;
 }
 
+
 /* Logo */
+
 .logo-dea {
     height: 45px;
 }
+
 
 /* ========================================== */
 /* BOTÕES */
@@ -53,6 +57,7 @@ header p {
 
 .btn-observatorio,
 .btn-contribua {
+
     background: white;
     color: #0f5b34;
     padding: 8px 14px;
@@ -66,35 +71,46 @@ header p {
 
 .btn-observatorio:hover,
 .btn-contribua:hover {
+
     background: #e6e6e6;
+
 }
+
 
 /* ========================================== */
 /* MAPA */
 /* ========================================== */
 
 #map {
+
     width: 100%;
     height: calc(100vh - 140px);
+
 }
+
 
 /* ========================================== */
 /* ROSA DOS VENTOS */
 /* ========================================== */
+
 .rosa-dos-ventos {
+
     position: absolute;
     bottom: 90px;
     right: 25px;
-    width: 60px;
+    width: 190px;
     opacity: 0.75;
     z-index: 1000;
+
 }
+
 
 /* ========================================== */
 /* LEGENDA */
 /* ========================================== */
 
 .legenda {
+
     position: absolute;
     bottom: 90px;
     left: 20px;
@@ -104,14 +120,21 @@ header p {
     border-radius: 6px;
     box-shadow: 0 0 12px rgba(0,0,0,0.25);
     z-index: 1000;
+
 }
 
 .legenda h4 {
+
     margin-top: 0;
     margin-bottom: 6px;
+
 }
 
-.legenda-icon.flood {
+
+/* Ícone pontos DEA */
+
+.legenda-icon.dea {
+
     width: 14px;
     height: 14px;
     background: #d90429;
@@ -119,15 +142,34 @@ header p {
     border: 2px solid white;
     display: inline-block;
     margin-right: 6px;
+
 }
+
+
+/* Ícone pontos colaborativos */
+
+.legenda-icon.publico {
+
+    width: 14px;
+    height: 14px;
+    background: #0077b6;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: inline-block;
+    margin-right: 6px;
+
+}
+
 
 /* Linhas dos vetores */
 
 .linha {
+
     display: inline-block;
     width: 20px;
     height: 4px;
     margin-right: 6px;
+
 }
 
 .via1 { background: #d90429; }
@@ -135,11 +177,23 @@ header p {
 .via3 { background: #0c08ef; }
 .via4 { background: #f4f006; }
 
+.legenda-icon.sede {
+
+width: 14px;
+height: 14px;
+background: #2a9d8f;
+border-radius: 50%;
+border: 2px solid white;
+display: inline-block;
+margin-right: 6px;
+
+}
 /* ========================================== */
 /* RODAPÉ */
 /* ========================================== */
 
 footer {
+
     background: #0c4b33;
     color: white;
     padding: 15px 25px;
@@ -147,26 +201,33 @@ footer {
     justify-content: space-between;
     align-items: center;
     font-size: 13px;
+
 }
 
 .footer-center {
+
     text-align: center;
+
 }
 
+
 /* ========================================== */
-/* PONTOS DE ALAGAMENTO (ANIMAÇÃO) */
+/* ANIMAÇÃO PONTOS - DEA */
 /* ========================================== */
 
-.pulse-marker {
+.pulse-red {
+
     width: 14px;
     height: 14px;
     background: #d90429;
     border-radius: 50%;
     border: 2px solid white;
     position: relative;
+
 }
 
-.pulse-marker::after {
+.pulse-red::after {
+
     content: "";
     position: absolute;
     width: 14px;
@@ -175,25 +236,75 @@ footer {
     top: 0;
     border-radius: 50%;
     background: rgba(217,4,41,0.6);
-    animation: pulse 1.6s infinite;
+    animation: pulseRed 1.6s infinite;
+
 }
 
-@keyframes pulse {
+@keyframes pulseRed {
+
     0% {
         transform: scale(1);
         opacity: 1;
     }
+
     100% {
         transform: scale(3);
         opacity: 0;
     }
+
 }
+
+
+/* ========================================== */
+/* ANIMAÇÃO PONTOS - COLABORATIVO */
+/* ========================================== */
+
+.pulse-blue {
+
+    width: 14px;
+    height: 14px;
+    background: #0077b6;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: relative;
+
+}
+
+.pulse-blue::after {
+
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    background: rgba(0,119,182,0.6);
+    animation: pulseBlue 1.6s infinite;
+
+}
+
+@keyframes pulseBlue {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+
+}
+
 
 /* ========================================== */
 /* POPUP CONTRIBUIÇÃO */
 /* ========================================== */
 
 .popupAviso {
+
     display: none;
     position: fixed;
     inset: 0;
@@ -201,20 +312,26 @@ footer {
     justify-content: center;
     align-items: center;
     z-index: 2000;
+
 }
 
 .popupContent {
+
     background: white;
     padding: 25px;
     max-width: 450px;
     border-radius: 8px;
+
 }
 
 .popupContent h3 {
+
     margin-top: 0;
+
 }
 
 .popupContent button {
+
     margin-right: 8px;
     padding: 6px 12px;
     border: none;
@@ -222,10 +339,13 @@ footer {
     color: white;
     border-radius: 4px;
     cursor: pointer;
+
 }
 
 .popupContent button:hover {
+
     background: #135f3b;
+
 }
 
 /* ========================================== */
@@ -233,9 +353,11 @@ footer {
 /* ========================================== */
 
 .north-arrow {
+
     background: white;
     padding: 6px 10px;
     font-weight: bold;
     border-radius: 4px;
     box-shadow: 0 0 6px rgba(0,0,0,0.3);
+
 }
