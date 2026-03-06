@@ -102,8 +102,8 @@ fetch('assets/sedes_municipais.geojson')
             return L.circleMarker(latlng, {
 
                 radius: 6,
-                fillColor: "#2a9d8f",
-                color: "Black",
+                fillColor: "black",
+                color: "white",
                 weight: 2,
                 fillOpacity: 1
 
