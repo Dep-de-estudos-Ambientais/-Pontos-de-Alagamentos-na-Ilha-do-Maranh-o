@@ -91,9 +91,6 @@ loadGeoJSON('assets/limites_municipais.geojson', {
 // ==========================================
 // 🔹 SEDES MUNICIPAIS
 // ==========================================
-// ==========================================
-// 🔹 SEDES MUNICIPAIS
-// ==========================================
 
 fetch('assets/sedes_municipais.geojson')
 .then(res => res.json())
@@ -138,59 +135,6 @@ fetch('assets/sedes_municipais.geojson')
 
 })
 .catch(err => console.error("Erro sedes:", err));
-// ==========================================
-// 🔹 VIAS DE EXPANSÃO
-// ==========================================
-
-fetch('assets/vias_expansao.geojson')
-
-.then(res => res.json())
-
-.then(data => {
-
-    var viasLayer = L.geoJSON(data, {
-
-        style: function(feature){
-
-            let nomeVia = feature.properties.layer;
-
-            if(nomeVia === "Vetor 01"){
-                return { color:"#d90429", weight:4 };
-            }
-
-            else if(nomeVia === "Vetor 02"){
-                return { color:"#135908", weight:4 };
-            }
-
-            else if(nomeVia === "Vetor 03"){
-                return { color:"#0c08ef", weight:4 };
-            }
-
-            else{
-                return { color:"#f4f006", weight:4 };
-            }
-
-        },
-
-        onEachFeature:function(feature, layer){
-
-            let props = feature.properties;
-
-            layer.bindPopup(`
-                <strong>${props.layer}</strong><br>
-                <strong>Sentido:</strong> ${props.PopupInfo || "-"}<br>
-                <strong>Descrição:</strong><br>
-                ${props["Informações"] || "-"}
-            `);
-
-        }
-
-    }).addTo(map);
-
-    viasLayer.bringToFront();
-
-});
-
 
 // ==========================================
 // 🔹 PONTOS DE ALAGAMENTO
