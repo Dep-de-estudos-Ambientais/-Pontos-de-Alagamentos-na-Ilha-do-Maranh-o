@@ -128,7 +128,6 @@ header p {
 
 }
 
-
 /* Ícone pontos DEA */
 
 .legenda-icon.dea {
@@ -143,7 +142,6 @@ header p {
 
 }
 
-
 /* Ícone pontos colaborativos */
 
 .legenda-icon.publico {
@@ -157,7 +155,15 @@ header p {
     margin-right: 6px;
 
 }
+.legenda-icon.sede {
 
+width: 14px;
+height: 14px;
+background: balck;
+border-radius: 50%;
+border: 2px solid white;
+display: inline-block;
+margin-right: 6px;
 /* ========================================== */
 /* RODAPÉ */
 /* ========================================== */
