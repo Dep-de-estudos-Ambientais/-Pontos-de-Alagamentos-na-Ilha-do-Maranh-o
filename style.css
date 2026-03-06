@@ -157,11 +157,13 @@ header p {
 
 width: 14px;
 height: 14px;
-background: balck;
+background: black;;
 border-radius: 50%;
 border: 2px solid white;
 display: inline-block;
 margin-right: 6px;
+
+}
 /* ========================================== */
 /* RODAPÉ */
 /* ========================================== */
