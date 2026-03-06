@@ -158,34 +158,6 @@ header p {
 
 }
 
-
-/* Linhas dos vetores */
-
-.linha {
-
-    display: inline-block;
-    width: 20px;
-    height: 4px;
-    margin-right: 6px;
-
-}
-
-.via1 { background: #d90429; }
-.via2 { background: #135908; }
-.via3 { background: #0c08ef; }
-.via4 { background: #f4f006; }
-
-.legenda-icon.sede {
-
-width: 14px;
-height: 14px;
-background: #2a9d8f;
-border-radius: 50%;
-border: 2px solid white;
-display: inline-block;
-margin-right: 6px;
-
-}
 /* ========================================== */
 /* RODAPÉ */
 /* ========================================== */
