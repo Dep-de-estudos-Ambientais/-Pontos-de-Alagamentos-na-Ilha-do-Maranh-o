@@ -39,7 +39,6 @@ function loadGeoJSON(url, options, bringFront = false) {
         .catch(err => console.error("Erro ao carregar:", url, err));
 }
 
-
 // ==========================================
 // 🔹 POPUP CONTRIBUIÇÃO
 // ==========================================
@@ -58,7 +57,6 @@ function irFormulario(){
     "_blank"
     );
 }
-
 
 // ==========================================
 // 🔹 LIMITES MUNICIPAIS
@@ -87,7 +85,6 @@ loadGeoJSON('assets/limites_municipais.geojson', {
 
 });
 
-
 // ==========================================
 // 🔹 SEDES MUNICIPAIS
 // ==========================================
@@ -106,7 +103,7 @@ fetch('assets/sedes_municipais.geojson')
 
                 radius: 6,
                 fillColor: "#2a9d8f",
-                color: "#ffffff",
+                color: "Black",
                 weight: 2,
                 fillOpacity: 1
 
