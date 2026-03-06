@@ -139,30 +139,21 @@ fetch('assets/sedes_municipais.geojson')
 
 var markers = L.layerGroup();
 
-
-// 🔴 Ícone oficial DEA
-
+// 🔴 Ícone oficial DEA (Estático)
 var iconDEA = L.divIcon({
-
-    className:"",
-    html:`<div class="pulse-red"></div>`,
-    iconSize:[18,18],
-    iconAnchor:[9,9]
-
+    className: "static-marker-red", // Classe personalizada se quiser usar CSS externo
+    html: `<div style="background: #ff0000; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.5);"></div>`,
+    iconSize: [18, 18],
+    iconAnchor: [9, 9]
 });
 
-
-// 🔵 Ícone colaborativo
-
+// 🔵 Ícone colaborativo (Estático)
 var iconPublico = L.divIcon({
-
-    className:"",
-    html:`<div class="pulse-blue"></div>`,
-    iconSize:[18,18],
-    iconAnchor:[9,9]
-
+    className: "static-marker-blue",
+    html: `<div style="background: #0000ff; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.5);"></div>`,
+    iconSize: [18, 18],
+    iconAnchor: [9, 9]
 });
-
 
 var sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1NaIwiVdKK-yCAMp2stgMbS4oBwJT-M2_9gIRVnbERKNcwLsLdG1AdgBPe9HbUt9LsNgnnSB_xx6r/pub?output=csv";
 
